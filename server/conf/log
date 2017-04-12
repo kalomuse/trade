@@ -1,0 +1,63 @@
+insert into account(account,password,site_name,site_url,mark)value('yinlingfengsao','Qu991710jm','member.bossgoo.com','http://member.bossgoo.com/', 'member.bossgoo.com');
+create table account(
+	id int(11) unsigned not null auto_increment, 
+	account varchar(64),
+	password varchar(64),
+	site_name varchar(64),
+	site_url varchar(128),
+	created_time datetime default CURRENT_TIMESTAMP,
+	modified_time datetime default CURRENT_TIMESTAMP,
+	deleted int(4) unsigned default 0,
+	mark varchar(128),
+	primary key(id));
+create table product(
+    id int(11) unsigned not null auto_increment,
+    name varchar(64),
+    category text,
+    price int(10),
+    brief varchar(128),
+    description text,
+    img varchar(128),
+    count int(8) defalut 0,
+    created_time datetime default CURRENT_TIMESTAMP,
+    modified_time datetime default CURRENT_TIMESTAMP,
+    deleted int(4) unsigned default 0,
+    primary key(id));
+
+   create table log(
+       id int(12) unsigned not null auto_increment,
+       site_name varchar(64),
+       site_url varchar(128),
+       product_name varchar(64),
+       product_id int(8),
+       success int(2),
+       msg text,
+       created_time datetime default CURRENT_TIMESTAMP,
+       modified_time datetime default CURRENT_TIMESTAMP,
+       deleted int(4) unsigned default 0,
+       primary key(id));
+
+
+        insert into user set(account, password, email) value('111111', '111111', '111111@qq.com');
+       create table user(
+       	id int(11) unsigned not null auto_increment,
+       	account varchar(128),
+       	password varchar(128),
+       	email varchar(128),
+       	company_name varchar(128),
+       	company_en_name varchar(128),
+       	province varchar(16),
+       	city varchar(16),
+       	district varchar(16),
+        contact_name varchar(32),
+        contact_phone varchar(32),
+        boss_name varchar(32),
+       	company_number varchar(64),
+       	company_number_img varchar(128),
+       	reg_email varchar(128),
+       	reg_account varchar(128),
+       	reg_password varchar(128),
+       	created_time datetime default CURRENT_TIMESTAMP,
+       	modified_time datetime default CURRENT_TIMESTAMP,
+       	deleted int(4) unsigned default 0,
+       	primary key(id));
