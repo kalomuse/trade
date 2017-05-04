@@ -9,7 +9,7 @@ require_once ('../../path.php');
 require_once ("$SERVER/conf/db.php");
 require_once ("$SERVER/util/Request.php");
 require_once ("$SERVER/util/File.php");
-require_once ("$SERVER/util/Cookie.php");
+require_once ("$SERVER/util/cookie.php");
 require_once ("$SERVER/util/code/test.php");
 
 
@@ -27,7 +27,7 @@ if($product) {
         //调用队列
         $dh = opendir('./');
         while (($file = readdir($dh)) != false) {
-            if($file == 'member.bossgoo.com')
+            if($file == 'aunetads.com')
             if ($file != 'index.php' && $file != '.' && $file != '..' && $file != 'keys') {
                 $db = new DB();
                 $web = $db->query('account', "mark=\"$file\"");

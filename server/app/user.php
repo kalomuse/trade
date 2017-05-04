@@ -7,7 +7,7 @@
  */
 require_once ("../../path.php");
 require_once ("$SERVER/conf/db.php");
-require_once ("$SERVER/util/file.php");
+require_once ("$SERVER/util/File.php");
 function upload() {
     $url = save_file('number_img');
     return $url;

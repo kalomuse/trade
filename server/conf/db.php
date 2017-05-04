@@ -19,6 +19,7 @@ class DB {
             die("连接失败: " . $con->connect_error);
         }
         $this->con = $con;
+		mysqli_query($this->con, "set names 'utf8';");
     }
 
     public function query($table, $where='') {
