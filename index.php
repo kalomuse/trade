@@ -9,8 +9,9 @@ require_once ('../../path.php');
 require_once ("$SERVER/conf/db.php");
 require_once ("$SERVER/util/Request.php");
 require_once ("$SERVER/util/File.php");
-require_once ("$SERVER/util/Cookie.php");
+require_once ("$SERVER/util/cookie.php");
 require_once ("$SERVER/util/code/test.php");
+
 
 $res = array(
     'ok' => 0,
@@ -23,14 +24,10 @@ $product = $db->query('product', "id=".$_POST['id']);
 $product = $product[0];
 
 if($product) {
-    $pid = pcntl_fork();
-    if ($pid == -1) {
-        die('could not fork');
-    } else if (!$pid) {
-        //调用队列
-        $dh = opendir('./');
-        while (($file = readdir($dh)) != false) {
-            //if($file == '21chemnet.com')
+    //调用队列
+    $dh = opendir('./');
+    while (($file = readdir($dh)) != false) {
+        if($file == 'auto1688.com')
             if ($file != 'index.php' && $file != '.' && $file != '..' && $file != 'keys') {
                 $db = new DB();
                 $web = $db->query('account', "mark=\"$file\"");
@@ -66,30 +63,31 @@ if($product) {
                 }
                 $db->insert('log', $set);
             }
-        }
-    } else {
-        //count + 1
-        $set = array(
-            'count' => array(
-                'value' => 'count + 1',
-                'no_str' => 1
-            ),
-        );
-        $db = new DB();
-        $db->update('product', $set, "id=".$product['id']);
-
-        //返回结果
-        json_write(array(
-            'ok' => 1,
-            'err' => '',
-            'msg' => '发送成功'
-        ));
-        fastcgi_finish_request();
     }
+    //count + 1
+    $set = array(
+        'count' => array(
+            'value' => 'count + 1',
+            'no_str' => 1
+        ),
+    );
+    $db = new DB();
+    $db->update('product', $set, "id=".$product['id']);
+
+    //返回结果
+    json_write(array(
+        'ok' => 1,
+        'err' => '',
+        'msg' => '发送成功'
+    ));
+    fastcgi_finish_request();
 } else {
     $res['err'] = "该产品不存在";
     return json_write($res);
 }
+
+
+
 
 
 
