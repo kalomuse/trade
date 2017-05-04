@@ -22,11 +22,11 @@ class DB {
 		mysqli_query($this->con, "set names 'utf8';");
     }
 
-    public function query($table, $where='') {
+    public function query($table, $where='', $order='id desc') {
         if(!$where) {
-            $set = mysqli_query($this->con, "select * from $table where deleted=0 order by id desc");
+            $set = mysqli_query($this->con, "select * from $table where deleted=0 order by ".$order);
         } else {
-            $set = mysqli_query($this->con, "select * from $table where $where and deleted=0 order by id desc");
+            $set = mysqli_query($this->con, "select * from $table where $where and deleted=0 order by ".$order);
         }
 
         $res = array();

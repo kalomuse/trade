@@ -9,7 +9,7 @@ require_once ("../../path.php");
 require_once ("$SERVER/conf/db.php");
 function query() {
     $db = new DB();
-    $res = $db -> query('account');
+    $res = $db -> query('account', '', 'id asc');
     return $res;
 }
 
