@@ -6,44 +6,7 @@
  * Time: 下午2:35
  */
 
-require_once ('login.php');
-require_once ('upload.php');
-
-
-function send_globe_bestb2b($web, $product) {
-    /*global $PATH;
-    $extra_cookie = "";
-    $url = 'http://member.asianproducts.com/member/?op=product&action=add_new_v2&item_id=';
-
-    //登录操作
-    $login_cookie_names = login_globe_bestb2b($web);
-    if ($login_cookie_names[0]) {
-        $login_cookie_str = get_cookie_str_for_arr($login_cookie_names[1], $extra_cookie);
-    } else {
-        return $login_cookie_names[1];
-    }
-
-    //上传操作
-    $img_path = upload_globe_bestb2b($PATH . $product['img'], $login_cookie_str);
-    if(!$img_path[0])
-        return $img_path[1];
-
-    $key = explode(' ', $product['name']);
-    $post_data = array(
-        'itemName'=> $product['name'],
-        'itemNo'=> '123456',
-        'feature'=> $product['description'],
-        'pwk1'=> $key[0],
-        'pwk2'=>$key[1],
-        'pwk3'=> $key[2],
-        'pwk4'=> $key[3],
-        'pwk5'=> '',
-        'category'=> 'A9448242540188',
-        'do'=> 'savedata',
-    );
-
-
-    $url .= $img_path[3];*/
+function send_auto1688($web, $product) {
     global $PATH, $SERVER;
     $extra_cookie = "";
 
@@ -67,6 +30,7 @@ function send_globe_bestb2b($web, $product) {
         "validationCode" => '',
     );
     $code_url = "http://www.aunetads.com/post/free-ads-rand_num_image.php?vcid=" . $match[1];
+    return '连接超时';
 
     do {
         $response = get($code_url);

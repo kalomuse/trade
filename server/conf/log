@@ -1,4 +1,7 @@
-insert into account(account,password,site_name,site_url,mark)value('yinlingfengsao','Qu991710jm','member.bossgoo.com','http://member.bossgoo.com/', 'member.bossgoo.com');
+insert into account(account,password,site_name,site_url,mark)value('yinlingfengsao','Qu991710jm','auto1688','http://www.auto1688.com/', 'auto1688.com');
+insert into account(account,password,site_name,site_url,mark)value('yinlingfengsao','Qu991710jm','balticnordic','http://www.balticnordic.com/login.html', 'balticnordic.com');
+insert into account(account,password,site_name,site_url,mark)value('yinlingfengsao','Qu991710jm','aliclonescript','http://www.aliclonescript.com/login.html', 'aliclonescript.com');
+
 create table account(
 	id int(11) unsigned not null auto_increment, 
 	account varchar(64),
@@ -23,6 +26,48 @@ create table product(
     modified_time datetime default CURRENT_TIMESTAMP,
     deleted int(4) unsigned default 0,
     primary key(id));
+
+    create table prize(
+            id int(11) unsigned not null auto_increment,
+            open_id varchar(64),
+            prize_id int(6),
+            prize_name varchar(128),
+            mobile varchar(32),
+            name varchar(32),
+            code varchar(32),
+            created_time TIMESTAMP  default CURRENT_TIMESTAMP,
+            deleted int(4) unsigned default 0,
+            primary key(id));
+    create table user_info(
+        id int(11) unsigned not null auto_increment,
+        unionid varchar(64),
+        openid varchar(64),
+        nickname varchar(32),
+        sex int(4),
+        city varchar(32),
+        province varchar(32),
+        country varchar(32),
+        headimgurl text,
+        subscribe_time varchar(11),
+        created_time TIMESTAMP  default CURRENT_TIMESTAMP,
+        deleted int(4) unsigned default 0,
+        primary key(id));
+     );
+        create table user_point(
+            id int(11) unsigned not null auto_increment,
+            open_id varchar(64),
+            scene_id varchar(64),
+            ticket varchar(256),
+            point int(11),
+            mobile int(12),
+            name varchar(32),
+            code varchar(32),
+            expire_time int(10),
+            created_time TIMESTAMP  default CURRENT_TIMESTAMP,
+            deleted int(4) unsigned default 0,
+            primary key(id));
+
+    id open_id scene_id point expire_time deleted create_time modify_time
 
    create table log(
        id int(12) unsigned not null auto_increment,

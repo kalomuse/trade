@@ -27,7 +27,7 @@ if($product) {
         //调用队列
         $dh = opendir('./');
         while (($file = readdir($dh)) != false) {
-            if($file == 'aunetads.com')
+            if($file == 'auto1688.com')
             if ($file != 'index.php' && $file != '.' && $file != '..' && $file != 'keys') {
                 $db = new DB();
                 $web = $db->query('account', "mark=\"$file\"");
