@@ -31,7 +31,7 @@ function register() {
         'subcategory'=> 91,
         'submit'=> 'CREATE FREE ACCOUNT',
     );
-
+    return json_write(array('ok'=>0, 'msg'=>'注册成功'));
     $response = post($url, $post_data, '', 0, 3);
     if(!$response['res']) {
         json_write(array('ok'=>0, 'msg'=>'注册成功'));
