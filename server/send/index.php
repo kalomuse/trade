@@ -9,7 +9,7 @@ require_once ('../../path.php');
 require_once ("$SERVER/conf/db.php");
 require_once ("$SERVER/util/Request.php");
 require_once ("$SERVER/util/File.php");
-require_once ("$SERVER/util/Cookie.php");
+require_once ("$SERVER/util/cookie.php");
 require_once ("$SERVER/util/code/test.php");
 
 $res = array(

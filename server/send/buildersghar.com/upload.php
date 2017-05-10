@@ -1,6 +1,6 @@
 <?php
 
-function upload_en_asiadcp($filename, $cookie) {
+function upload_buildersghar($filename, $cookie) {
     $url = "http://en.asiadcp.com/member/mypicture.php?action=1";
     $post_data = array(
         'userfile'=> new CURLFile($filename),

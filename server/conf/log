@@ -2,6 +2,9 @@ insert into account(account,password,site_name,site_url,mark)value('yinlingfengs
 insert into account(account,password,site_name,site_url,mark)value('yinlingfengsao','Qu991710jm','balticnordic','http://www.balticnordic.com/login.html', 'balticnordic.com');
 insert into account(account,password,site_name,site_url,mark)value('yinlingfengsao','Qu991710jm','aliclonescript','http://www.aliclonescript.com/login.html', 'aliclonescript.com');
 
+insert into account(account,password,site_name,site_url,mark)value('weidazhonguoren@gmail.com','Qu991710jm','tradedeals','http://tradedeals.biz/', 'tradedeals.biz');
+insert into account(account,password,site_name,site_url,mark)value('weidazhonguoren@gmail.com','Qu991710jm','buildersghar','http://buildersghar.com/', 'buildersghar.com');
+
 create table account(
 	id int(11) unsigned not null auto_increment, 
 	account varchar(64),

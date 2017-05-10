@@ -6,8 +6,6 @@
  * Time: 下午2:35
  */
 require_once ('login.php');
-require_once ('upload.php');
-
 
 function send_tradedeals($web, $product) {
     global $PATH;
