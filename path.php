@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL^E_NOTICE^E_WARNING);
 $PATH = dirname(__FILE__);
 $CLIENT = $PATH.'/client';
 $SERVER = $PATH.'/server';

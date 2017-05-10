@@ -1,5 +1,6 @@
 <?php
-$active = explode('/', $_SERVER['PHP_SELF'])[2];
+$uri = explode('/', $_SERVER['PHP_SELF']);
+$active = $uri[2]? $uri[2]: $uri[1];
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,7 +16,7 @@ $active = explode('/', $_SERVER['PHP_SELF'])[2];
     <div class="navbar-inner">
         <a class="brand" href="#">产品</a>
         <ul class="nav">
-            <li class='<?php  if($active == 'user') echo 'active'?>'><a href="/">首页</a></li>
+            <li class='<?php  if($active == 'user') echo 'active'?>'><a href="/user">首页</a></li>
             <li class='<?php  if($active == 'account') echo 'active'?>'><a class="active" href="/account">账号</a></li>
             <li class='<?php  if($active == 'product') echo 'active'?>'><a href="/product">商品</a></li>
             <li class='<?php  if($active == 'log') echo 'active'?>'><a href="/log">日志</a></li>

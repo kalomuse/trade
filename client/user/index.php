@@ -150,7 +150,7 @@ require_once("$SERVER/app/user.php");
             alert(res.err);
         } else {
             alert(res.msg);
-            location.href = "/product";
+            location.reload();
         }
     });
     });
