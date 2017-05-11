@@ -121,10 +121,9 @@ require_once("$SERVER/app/user.php");
             <label  for="reg_password">自动注册密码</label>
             <input type="text" id="reg_password" value="<?= $user[0]['reg_password'] ?>">
         </div>
-        <button class="btn" id="submit">提  交</button>
 
     </form>
-
+    <button class="btn" id="submit">提  交</button>
 </div>
 <script type="text/javascript" src="/widget/distpicker/dist/distpicker.data.js"></script>
 <script type="text/javascript" src="/widget/distpicker/dist/distpicker.js"></script>
