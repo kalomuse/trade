@@ -14,30 +14,29 @@ function register() {
     $db = new DB();
     $user = $db->query('user', "id=1");
     //注册页面
-    $url = "http://tradedeals.biz/auth/reg";
+    $url = "http://buildersghar.com/user/register";
+    $response = get($url, '', 1);
+    $cookie = get_cookie_str_for_html($response['res']);
+    str_set_cookie($cookie);
+    preg_match('/<input type=\'hidden\' name=\'CSRFName\' value=\'(.*)\' \/>/', $response['res'], $match);
+    $CSRFName = $match[1];
+    preg_match('/<input type=\'hidden\' name=\'CSRFToken\' value=\'(.*)\' \/>/', $response['res'], $match);
+    $CSRFToken = $match[1];
 
+    $url = "http://buildersghar.com/index.php";
     $post_data = array(
-        'first_name'=> $user[0]['contact_name_first'],
-        'last_name'=> $user[0]['contact_name'],
-        'email'=> $user[0]['reg_email'],
-        'password'=> $user[0]['reg_password'],
-        'password_confirm'=> $user[0]['reg_password'],
-        'company'=> $user[0]['company_en_name'],
-        'phone'=> '86'.$user[0]['pre_contact_phone'].$user[0]['contact_phone'],
-        'city'=> $user[0]['city'],
-        'location'=> $user[0]['company_address'],
-        'country'=> 309,
-        'category'=> 5,
-        'subcategory'=> 91,
-        'submit'=> 'CREATE FREE ACCOUNT',
+        'CSRFName'=> $CSRFName,
+        'CSRFToken'=> $CSRFToken,
+        'page'=>'register',
+        'action'=>'register_post',
+        's_name'=>$user[0]['contact_name_first'].$user[0]['contact_name'],
+        's_email'=>$user[0]['reg_email'],
+        's_password'=>$user[0]['reg_password'],
+        's_password2'=>$user[0]['reg_password'],
     );
-    return json_write(array('ok'=>0, 'msg'=>'注册成功'));
-    $response = post($url, $post_data, '', 0, 3);
-    if(!$response['res']) {
-        json_write(array('ok'=>0, 'msg'=>'注册成功'));
-    } else {
-        json_write(array('ok'=>0, 'msg'=>'请确保账号未注册，密码大于等于8位'));
-    }
+
+    $response = post($url, $post_data, '', 1, 3);
+    json_write(array('ok'=>1, 'msg'=>'注册成功'));
 }
 
 
