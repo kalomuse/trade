@@ -30,7 +30,7 @@ if($product) {
         //调用队列
         $dh = opendir('./');
         while (($file = readdir($dh)) != false) {
-            //if($file == '21chemnet.com')
+            //if($file == 'canetads.com')
             if ($file != 'index.php' && $file != '.' && $file != '..' && $file != 'keys') {
                 $db = new DB();
                 $web = $db->query('account', "mark=\"$file\"");
@@ -78,13 +78,18 @@ if($product) {
         $db = new DB();
         $db->update('product', $set, "id=".$product['id']);
 
+	ob_start();
         //返回结果
         json_write(array(
             'ok' => 1,
             'err' => '',
             'msg' => '发送成功'
         ));
-        fastcgi_finish_request();
+	$size = ob_get_length();
+	header("Content-Length: ". $size . "\r\n"); 
+	ob_end_flush();
+	flush();
+        //fastcgi_finish_request();
     }
 } else {
     $res['err'] = "该产品不存在";
