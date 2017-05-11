@@ -67,7 +67,7 @@
 </div>
 <script>
     function register(mark, code) {
-        let url = '';
+        var url = '';
         if(code) {
             url = `/server/send/${mark}/register.php?action=index&code=${code}`;
         }else {
@@ -92,28 +92,28 @@
     $('#validateCodeImg').click(function() {
         $(this).attr('src', '/server/send/<?= $mark?>/register.php?action=code');
     });
-    $('.alter').click((e) => {
-        let $tr = $(e.target).parents('tr');
+    $('.alter').click(function(e) {
+        var $tr = $(e.target).parents('tr');
         $tr.find('td').each(function() {
             if(!$(this).hasClass('action')) {
-                let text = $(this).text();
-                let name = $(this).attr('name');
+                var text = $(this).text();
+                var name = $(this).attr('name');
                 $(this).html(`<input type='text' name=${name} value=${text}>`);
             }
         });
         $tr.find('.alter').hide();
         $tr.find('.save').show();
     });
-    $('.save').click((e) => {
-        let $tr = $(e.target).parents('tr');
-        let data = {'id': $tr.attr('id')};
+    $('.save').click(function(e) {
+        var $tr = $(e.target).parents('tr');
+        var data = {'id': $tr.attr('id')};
         $tr.find('input').each(function() {
-            let value = $(this).val();
-            let name = $(this).attr('name');
+            var value = $(this).val();
+            var name = $(this).attr('name');
             data[name] = value;
         });
 
-        $.post("/server/app/account.php?action=save", data, (res) => {
+        $.post("/server/app/account.php?action=save", data, function(res) {
             if(res.ok) {
                 location.reload();
             } else {

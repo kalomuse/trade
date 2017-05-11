@@ -129,14 +129,14 @@ require_once("$SERVER/app/user.php");
 <script type="text/javascript" src="/widget/distpicker/dist/distpicker.js"></script>
 <script type="text/javascript" src="/widget/uploader/webuploader.js"></script>
 <script>
-    $('#submit').click(() => {
-        let post_data = {};
+    $('#submit').click(function() {
+        var post_data = {};
     $('#form input[type=text]').each(function() {
-        let name = $(this).attr('id');
+        var name = $(this).attr('id');
         post_data[name] = $(this).val();
     });
     $('#form select').each(function() {
-        let name = $(this).attr('id');
+        var name = $(this).attr('id');
         post_data[name] = $(this).val();
     });
 

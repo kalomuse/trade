@@ -85,14 +85,14 @@ require_once("$CLIENT/base/header/header.php");
 <script type="text/javascript" src="/conf/cat.js"></script>
 <script>
     function get_catgory(cat, id, deep) {
-        for (let i in cat) {
+        for (var i in cat) {
             if(!(deep)) {
                 if (cat[i].id == id) {
                     return cat[i].s;
                 }
             } else {
                 if(cat[i].s) {
-                    let res = get_catgory(cat[i].s, id, deep - 1);
+                    var res = get_catgory(cat[i].s, id, deep - 1);
                     if(res) {
                         return res;
                     }
@@ -110,7 +110,7 @@ require_once("$CLIENT/base/header/header.php");
         if(tmp_cat) {
             var id = 'cate' + (deep + 1);
             if($('#' + id).length) {
-                for (let i in tmp_cat) {
+                for (var i in tmp_cat) {
                     if(tmp_cat[i].isleaf == 'false') add = '+ ';
                     else add = '';
                     str += `<option value=${tmp_cat[i].id} deep=${deep + 1} onclick="write_catgory(${tmp_cat[i].id}, ${deep + 1})">${add+tmp_cat[i].n}</option>`;
@@ -118,7 +118,7 @@ require_once("$CLIENT/base/header/header.php");
                 $('#' + id).html(str);
             } else {
                 var str = `<select id=${id} size="8">`;
-                for (let i in tmp_cat) {
+                for (var i in tmp_cat) {
                     if(tmp_cat[i].isleaf == 'false') add = '+ ';
                     else add = '  ';
                     str += `<option value=${tmp_cat[i].id} deep=${deep + 1} onclick="write_catgory(${tmp_cat[i].id}, ${deep + 1})">${add+tmp_cat[i].n}</option>`;
@@ -130,10 +130,10 @@ require_once("$CLIENT/base/header/header.php");
         }
     }
     $(function () {
-        $('#submit').click(() => {
-            let post_data = {};
+        $('#submit').click(function() {
+            var post_data = {};
             $('#form input[type=text]').each(function() {
-                let name = $(this).attr('id');
+                var name = $(this).attr('id');
                 post_data[name] = $(this).val();
             });
             post_data['description'] = $('#description').val();
@@ -147,21 +147,21 @@ require_once("$CLIENT/base/header/header.php");
                 }
             });
         });
-        $('#category').click(() =>  {
+        $('#category').click(function() {
             $('.button-list').show();
         if($('#category').val() && $('#cate').find('select').length)
             $('#cate').show();
         else
             write_catgory(0, 0);
     });
-        $('.ok').click((e) =>  {
+        $('.ok').click(function(e) {
             $('#category').attr('data', '');
         e.preventDefault();
         $('#cate').find('select').each(function() {
-            let data = $('#category').attr('data');
+            var data = $('#category').attr('data');
             $('#category').attr('data',  data + $(this).find('option:selected').text() + ' >> ');
         });
-        let str = $('#category').attr('data').replace(/( >> | >>  >> )$/, '');
+        var str = $('#category').attr('data').replace(/( >> | >>  >> )$/, '');
         str = str.replace(/\+ /g, '');
         $('#category').attr('data', str);
         $('#category').val($('#category').attr('data'));
