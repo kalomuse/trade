@@ -6,15 +6,15 @@
  * Time: 下午2:35
  */
 
-function send_canetads($web, $product) {
+function send_usaonlineclassifieds($web, $product) {
     global $PATH, $SERVER;
     $extra_cookie = "";
 
-    $url = 'http://www.canetads.com/post/post-free-ads.php';
+    $url = 'http://www.usaonlineclassifieds.com/post/post-free-ads.php';
     $response = get($url, '', 0, 3);
     preg_match('/free-ads-rand_num_image.php\?vcid=(\d*)/', $response['res'], $match);
 
-    $url = "http://www.canetads.com/post/post-free-ads-op.php";
+    $url = "http://www.usaonlineclassifieds.com/post/post-free-ads-op.php";
     $post_data = array(
         "adTitle" => $product['name'],
         "adDescription" => $product['description'],
@@ -29,7 +29,7 @@ function send_canetads($web, $product) {
         "vcid" => $match[1],
         "validationCode" => '',
     );
-    $code_url = "http://www.canetads.com/post/free-ads-rand_num_image.php?vcid=" . $match[1];
+    $code_url = "http://www.usaonlineclassifieds.com/post/free-ads-rand_num_image.php?vcid=" . $match[1];
 
     do {
         $response = get($code_url);
