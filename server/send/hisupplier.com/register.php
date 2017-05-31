@@ -74,9 +74,9 @@ function register() {
     $response = post($url, $post_data, $cookie, 0, 3);
     preg_match('/<ul class="errorMessage">(.*)<li><span>(.*)<\/span><\/li>/s', $response['res'], $match);
     if($match)
-        json_write(array('ok'=>0, 'msg'=>$match[2]));
+        json_write(array('ok'=>0, 'msg'=>$match[2]), dirname(__FILE__));
     else {
-        json_write(array('ok'=>1, 'msg'=>'注册完成，请等待审核'));
+        json_write(array('ok'=>1, 'msg'=>'注册完成，请等待审核'), dirname(__FILE__));
     }
 }
 

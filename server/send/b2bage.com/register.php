@@ -68,14 +68,14 @@ function register() {
 
             }
             else {
-                json_write(array('ok' => 0, 'msg' => $match[1]));
+                json_write(array('ok' => 0, 'msg' => $match[1]), dirname(__FILE__));
                 return;
             }
         } else if(preg_match('/You have successfully registered/', $response['res'], $match)) {
-            json_write(array('ok' => 1, 'msg' => '注册成功'));
+            json_write(array('ok' => 1, 'msg' => '注册成功'), dirname(__FILE__));
             return;
         } else {
-            json_write(array('ok' => 0, 'msg' => '注册失败'));
+            json_write(array('ok' => 0, 'msg' => '注册失败'), dirname(__FILE__));
             return;
         }
     } while(1);

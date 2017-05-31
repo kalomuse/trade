@@ -55,7 +55,7 @@ function register() {
         if(preg_match('/alert\(\'(.*)\'\);history\.go\(-1\);/', $response['res'], $match)) {
             if (preg_match('/Your verification/', $match[1])) {
             } else {
-                json_write(array('ok' => 0, 'msg' => $match[1]));
+                json_write(array('ok' => 0, 'msg' => $match[1]), dirname(__FILE__));
                 return;
             }
         } else {
@@ -91,7 +91,7 @@ function register() {
     );
     $response = post($url, $post_data, $cookie, 1, 3);
     if(preg_match('/Successfully/', $response['res'], $match)) {
-        json_write(array('ok' => 1, 'msg' => '注册成功'));
+        json_write(array('ok' => 1, 'msg' => '注册成功'), dirname(__FILE__));
     }
 
 

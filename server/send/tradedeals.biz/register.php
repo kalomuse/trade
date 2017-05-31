@@ -34,9 +34,9 @@ function register() {
 
     $response = post($url, $post_data, '', 0, 3);
     if(!$response['res']) {
-        json_write(array('ok'=>0, 'msg'=>'注册成功'));
+        json_write(array('ok'=>0, 'msg'=>'注册成功'), dirname(__FILE__));
     } else {
-        json_write(array('ok'=>0, 'msg'=>'请确保账号未注册，密码大于等于8位'));
+        json_write(array('ok'=>0, 'msg'=>'请确保账号未注册，密码大于等于8位'), dirname(__FILE__));
     }
 }
 

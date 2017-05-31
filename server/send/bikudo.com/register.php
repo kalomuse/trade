@@ -37,9 +37,9 @@ function register() {
     $response = post($url, $post_data, '', 0, 3);
     preg_match('/<font color="\#f01010">(.*)<\/font>/', $response['res'], $match);
     if($match)
-        json_write(array('ok'=>0, 'msg'=>$match[1]));
+        json_write(array('ok'=>0, 'msg'=>$match[1]), dirname(__FILE__));
     else {
-        json_write(array('ok'=>0, 'msg'=>'注册成功'));
+        json_write(array('ok'=>0, 'msg'=>'注册成功'), dirname(__FILE__));
     }
 }
 

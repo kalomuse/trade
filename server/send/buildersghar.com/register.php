@@ -36,7 +36,7 @@ function register() {
     );
 
     $response = post($url, $post_data, '', 1, 3);
-    json_write(array('ok'=>1, 'msg'=>'注册成功'));
+    json_write(array('ok'=>1, 'msg'=>'注册成功'), dirname(__FILE__));
 }
 
 

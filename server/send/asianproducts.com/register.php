@@ -79,11 +79,11 @@ function register() {
     );
     $response = post($url, $post_data, $cookie, 1, 3);
     if($response['res'] == 'Register - Get failure on Step 2')
-        json_write(array('ok'=>0, 'msg'=>$response['res']));
+        json_write(array('ok'=>0, 'msg'=>$response['res']), dirname(__FILE__));
     else if(preg_match('/step=checkMail/', $response['res'])){
-        json_write(array('ok'=>1, 'msg'=>'请查收邮件激活'));
+        json_write(array('ok'=>1, 'msg'=>'请查收邮件激活'), dirname(__FILE__));
     } else {
-        json_write(array('ok'=>0, 'msg'=>"注册失败"));
+        json_write(array('ok'=>0, 'msg'=>"注册失败"), dirname(__FILE__));
     }
 }
 

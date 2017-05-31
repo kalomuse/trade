@@ -24,11 +24,11 @@ function register() {
 
     $response = post($url, $post_data, '', 1, 3);
     if(preg_match('/Verify that the information has been sent to your mailbox/', $response['res']))
-        json_write(array('ok'=>0, 'msg'=>' 邮件已发送至您的邮箱，请注意查收'));
+        json_write(array('ok'=>0, 'msg'=>' 邮件已发送至您的邮箱，请注意查收'), dirname(__FILE__));
     else if(preg_match('/Your e-mail address seemd wrong/', $response['res'])){
-        json_write(array('ok'=>0, 'msg'=>'用户名或者邮箱已注册'));
+        json_write(array('ok'=>0, 'msg'=>'用户名或者邮箱已注册'), dirname(__FILE__));
     } else {
-        json_write(array('ok'=>0, 'msg'=>'注册失败'));
+        json_write(array('ok'=>0, 'msg'=>'注册失败'), dirname(__FILE__));
     }
 }
 

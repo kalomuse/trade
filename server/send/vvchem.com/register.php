@@ -38,11 +38,11 @@ function register() {
 
     $response = post($url, $post_data, '', 0, 3);
     if(preg_match('/<li><strong>(.*)<a/', $response['res'], $match)) {
-        json_write(array('ok'=>0, 'msg'=>$match[1]));
+        json_write(array('ok'=>0, 'msg'=>$match[1]), dirname(__FILE__));
     } else if(preg_match('/The URL has moved/', $response['res'])){
-        json_write(array('ok'=>1, 'msg'=>'注册成功'));
+        json_write(array('ok'=>1, 'msg'=>'注册成功', dirname(__FILE__)));
     } else {
-        json_write(array('ok'=>0, 'msg'=>'未知的错误'));
+        json_write(array('ok'=>0, 'msg'=>'未知的错误'), dirname(__FILE__));
     }
 }
 
