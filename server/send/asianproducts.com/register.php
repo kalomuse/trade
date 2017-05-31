@@ -52,7 +52,7 @@ function register() {
     $response = get($url, $cookie, 0 , 3);
     preg_match('/<input type="hidden" name="user_id" value=\"([a-zA-Z0-9]*)\">/', $response['res'], $match);
     if(!$match)
-        json_write(array('ok'=>0, 'msg'=>"注册失败"));
+        json_write(array('ok'=>0, 'msg'=>"注册失败"), dirname(__FILE__));
     $post_data = array(
         'email'=> $user[0]['reg_email'],
         'companyname'=> $user[0]['company_name'],
