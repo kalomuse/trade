@@ -37,6 +37,7 @@ require_once("$SERVER/app/log.php");
         <td>网站url</td>
         <td>产品ID</td>
         <td>产品名</td>
+        <td>创建时间</td>
         </thead>
         <tbody>
         <?php foreach(list_log() as $a) { ?>
@@ -46,6 +47,7 @@ require_once("$SERVER/app/log.php");
                 <td name="网站url"><?= $a['site_url'] ?></td>
                 <td name="产品ID"><?= $a['product_id'] ?></td>
                 <td name="产品名"><?= $a['product_name'] ?></td>
+                <td name="创建时间"><?= $a['created_time'] ?></td>
             </tr>
         <?php } ?>
         </tbody>
