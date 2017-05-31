@@ -48,8 +48,10 @@ if($product) {
                     } else {
                         $msg = $web['website_url'] . "文件不存在，请联系开发人员";
                     }
-                } else {
+                } else if($web) {
                     $msg = "请绑定" . $web['website_url'] . "正确账号";
+                } else {
+                    continue;
                 }
                 //写入log
                 $set = array(
