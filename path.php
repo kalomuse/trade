@@ -9,7 +9,7 @@ function json_write($res, $mark='') {
         $mark = $mark_arr[count($mark_arr) - 1];
         if($mark) {
             global $SERVER;
-            include("$SERVER/conf/db.php");
+            include_once("$SERVER/conf/db.php");
             $db = new DB();
             register_status($db, $mark, $res);
         }

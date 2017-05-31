@@ -50,21 +50,21 @@ function register()
     do {
         $response = get($code_url, $cookie);
         file_put_contents("$SERVER/util/code/test/1.png", $response['res']);
-        $post_data['validcode'] = get_code("$SERVER/util/code/", "21chemnet");
+        $post_data['CodeShown'] = get_code("$SERVER/util/code/", "21chemnet");
         //$post_data['validcode'] = '11111';
         $response = post($url, $post_data, $cookie, 1, 3);
         if (preg_match('/alert\("(.*)\!\"\)/', $response['res'], $match)) {
             if($match && $match[1] == "Verification code input error") {
 
             } else {
-                json_write(array('ok'=>0, 'msg'=>$match[1]));
+                json_write(array('ok'=>0, 'msg'=>$match[1]), dirname(__FILE__));
                 return true;
             }
         } else if(preg_match('/alert\(\'(.*)\'\)/', $response['res'], $match)){
-            json_write(array('ok'=>1, 'msg'=>$match[1]));
+            json_write(array('ok'=>1, 'msg'=>$match[1]), dirname(__FILE__));
             return true;
         } else {
-            json_write(array('ok'=>0, 'msg'=>"注册失败"));
+            json_write(array('ok'=>0, 'msg'=>"注册失败"), dirname(__FILE__));
             return true;
         }
     } while (1);
