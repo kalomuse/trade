@@ -51,6 +51,10 @@ require_once("$CLIENT/base/header/header.php");
             <input type="text" id="name" placeholder="请输入产品名">
         </div>
         <div class="control-group">
+            <label for="price">价格</label>
+            <input type="text" id="price" name="price" style="width:80px;"> $
+        </div>
+        <div class="control-group">
             <label for="category">产品分类</label>
             <input type="text" id="category" name="category" readonly="readonly">
             <div id="cate" class="col-md-10" data-required="true" style="width: 1430px;position:relative;">
