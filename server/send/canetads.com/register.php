@@ -7,3 +7,7 @@
  */
 require_once ("../../../path.php");
 json_write(array('ok' => 1, 'msg' => '注册成功'));
+
+require_once ("$SERVER/conf/db.php");
+$db = new DB();
+register_status($db, 'canetads.com', 'success');
