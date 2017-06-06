@@ -38,6 +38,7 @@ require_once("$SERVER/app/log.php");
         <td>产品ID</td>
         <td>产品名</td>
         <td>创建时间</td>
+        <td>操作</td>
         </thead>
         <tbody>
         <?php foreach(list_log() as $a) { ?>
@@ -48,6 +49,7 @@ require_once("$SERVER/app/log.php");
                 <td name="产品ID"><?= $a['product_id'] ?></td>
                 <td name="产品名"><?= $a['product_name'] ?></td>
                 <td name="创建时间"><?= $a['created_time'] ?></td>
+                <td name="操作" ><?= ($a['success'] && $a['product_id'])?'': '<button class="send" product_id="'.$a['product_id'].'" mark="'.$a['site_name'].'">重新发送</button>' ?></td></td>
             </tr>
         <?php } ?>
         </tbody>
@@ -65,6 +67,22 @@ require_once("$SERVER/app/log.php");
     <li><a href="#">5</a></li>
     <li><a href="#">&raquo;</a></li>
 </ul>
+
+<script>
+    $('.send').click(function(e) {
+        var mark = $(this).attr('mark');
+        var $tr = $(e.target).parents('tr');
+        $.post("/server/send/index.php", {'id': $tr.attr('id'), 'mark': mark}, function(res) {
+            if(res.ok) {
+                alert(res.msg);
+            } else {
+                alert(res.err);
+            }
+        });
+    });
+
+
+</script>
 
 <?php require_once("$CLIENT/base/footer/footer.php"); ?>
 

@@ -67,7 +67,7 @@ require_once("$SERVER/app/product.php");
 <script>
     $('.send').click(function(e) {
         var $tr = $(e.target).parents('tr');
-        $.post("/server/send/index.php", {'id': $tr.attr('id')}, function(res) {
+        $.post("/server/send/index.php", {'id': $tr.attr('id'), 'mark': ''}, function(res) {
             if(res.ok) {
                 alert(res.msg);
             } else {

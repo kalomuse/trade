@@ -21,8 +21,15 @@ $db = new DB();
 //取出产品详情
 $product = $db->query('product', "id=".$_POST['id']);
 $product = $product[0];
+$mark = '';
+if($_POST['mark']) {
+    $tmp = $db->query('account', "site_name='{$_POST['mark']}'");
+    if($tmp)
+        $mark = $tmp[0]['mark'];
+}
 
 if($product) {
+    $mark =
     $pid = pcntl_fork();
     if ($pid == -1) {
         die('could not fork');
@@ -30,7 +37,7 @@ if($product) {
         //调用队列
         $dh = opendir('./');
         while (($file = readdir($dh)) != false) {
-            //if($file == 'canetads.com')
+            if(!$mark || $mark == $file)
             if ($file != 'index.php' && $file != '.' && $file != '..' && $file != 'keys') {
                 $db = new DB();
                 $web = $db->query('account', "mark=\"$file\"");
@@ -88,7 +95,7 @@ if($product) {
             'msg' => '发送成功'
         ));
 	$size = ob_get_length();
-	header("Content-Length: ". $size . "\r\n"); 
+	header("Content-Length: ". $size . "\r\n");
 	ob_end_flush();
 	flush();
         //fastcgi_finish_request();
