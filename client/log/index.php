@@ -49,7 +49,7 @@ require_once("$SERVER/app/log.php");
                 <td name="产品ID"><?= $a['product_id'] ?></td>
                 <td name="产品名"><?= $a['product_name'] ?></td>
                 <td name="创建时间"><?= $a['created_time'] ?></td>
-                <td name="操作" ><?= ($a['success'] && $a['product_id'])?'': '<button class="send" product_id="'.$a['product_id'].'" mark="'.$a['site_name'].'">重新发送</button>' ?></td></td>
+                <td name="操作" ><?php if(!$a['success'] && $a['product_id']) echo '<button class="send" product_id="'.$a['product_id'].'" mark="'.$a['site_name'].'">重新发送</button>' ?></td></td>
             </tr>
         <?php } ?>
         </tbody>
