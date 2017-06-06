@@ -29,7 +29,6 @@ if($_POST['mark']) {
 }
 
 if($product) {
-    $mark =
     $pid = pcntl_fork();
     if ($pid == -1) {
         die('could not fork');

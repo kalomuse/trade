@@ -70,9 +70,9 @@ require_once("$SERVER/app/log.php");
 
 <script>
     $('.send').click(function(e) {
-        var mark = $(this).attr('mark');
-        var $tr = $(e.target).parents('tr');
-        $.post("/server/send/index.php", {'id': $tr.attr('id'), 'mark': mark}, function(res) {
+        var mark = $(this).attr('mark'),
+            product_id = $(this).attr('product_id');
+        $.post("/server/send/index.php", {'id': product_id, 'mark': mark}, function(res) {
             if(res.ok) {
                 alert(res.msg);
             } else {
