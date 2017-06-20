@@ -110,6 +110,10 @@ require_once("$SERVER/app/user.php");
             </div>
         </div>
         <div class="control-group">
+            <label  for="company_introduct">企业简介</label>
+            <textarea type="text" id="company_introduct" style="width:300px"; rows="4"><?= $user[0]['company_introduct'] ?></textarea>
+        </div>
+        <div class="control-group">
             <label  for="reg_email">自动注册邮箱</label>
             <input type="text" id="reg_email" value="<?= $user[0]['reg_email'] ?>" >
         </div>
@@ -139,6 +143,10 @@ require_once("$SERVER/app/user.php");
         var name = $(this).attr('id');
         post_data[name] = $(this).val();
     });
+        $('#form textarea').each(function() {
+            var name = $(this).attr('id');
+            post_data[name] = $(this).val();
+        });
 
     if($('.img-list img').attr('src')) {
         post_data['company_number_img'] = $('.img-list img').attr('src');
