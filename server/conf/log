@@ -50,6 +50,7 @@ create table product(
         city varchar(32),
         province varchar(32),
         country varchar(32),
+        company_introduct text,
         headimgurl text,
         subscribe_time varchar(11),
         created_time TIMESTAMP  default CURRENT_TIMESTAMP,
